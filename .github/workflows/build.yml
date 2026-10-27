@@ -1,0 +1,60 @@
+name: build
+
+on:
+  schedule:
+    - cron: '0 0 */3 * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Upload even if the content matches the last history entry
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Sparse checkout pyrlyn/rtok main
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: pyrlyn/rtok
+          ref: main
+          path: rtok
+          sparse-checkout: |
+            scripts/grammars.py
+            libs/treesitter-native/grammars.json
+            mise.toml
+          sparse-checkout-cone-mode: false
+      - name: Install tree-sitter CLI (version from rtok mise.toml)
+        run: |
+          v=$(sed -n 's/^tree-sitter *= *"\([^"]*\)".*/\1/p' rtok/mise.toml)
+          echo "tree-sitter CLI $v"
+          curl -fsSL "https://github.com/tree-sitter/tree-sitter/releases/download/v$v/tree-sitter-linux-x64.gz" | gunzip > /usr/local/bin/tree-sitter
+          chmod +x /usr/local/bin/tree-sitter
+          tree-sitter --version
+      - name: Build vendor directory
+        id: build
+        run: python3 scripts/build.py --rtok rtok --out dist ${{ inputs.force && '--force' || '' }}
+      - name: Upload artifact
+        if: steps.build.outputs.upload == 'true'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: ${{ steps.build.outputs.name }}
+          path: dist/vendor/
+          retention-days: 90
+          if-no-files-found: error
+      - name: Commit history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add history.json history.log
+          git commit -m "history: ${{ steps.build.outputs.name }} (${{ steps.build.outputs.outcome }})"
+          git push
