@@ -4,14 +4,13 @@
 Runs rtok's `scripts/grammars.py fetch` in an rtok checkout, then copies only what rtok's
 libs/treesitter-native build compiles (found with `cc -MM`), one license per upstream repo,
 the pre-generated rtok_ts_table.c and a grammars.txt with module-relative paths. The result in
-dist/vendor drops straight into rtok's libs/treesitter-native/build/vendor; build rtok with
+dist/ts-grammars-<date>.tar.gz unpacks straight into rtok's libs/treesitter-native/build/vendor; build rtok with
 `-x :treesitter-native:fetchGrammars`.
 
 Usage: build.py --rtok DIR [--out dist] [--history history.json] [--log history.log] [--force]
-Writes KEY=VALUE lines (name, sha256, outcome, ...) to $GITHUB_OUTPUT when set, and a compact
-report to $GITHUB_STEP_SUMMARY.
+Writes KEY=VALUE lines (name, sha256, outcome, ...) to $GITHUB_OUTPUT when set, and a compact report to $GITHUB_STEP_SUMMARY.
 """
-import argparse, datetime, glob, hashlib, json, os, shutil, subprocess, sys, urllib.request
+import argparse, datetime, glob, gzip, hashlib, io, json, os, shutil, subprocess, sys, tarfile, urllib.request
 
 NOW = datetime.datetime.now(datetime.timezone.utc)
 LINES = []
@@ -42,14 +41,20 @@ def license_for(repo, commit):
             continue
     return None, None
 
-def tree_sha256(root):
-    """Content hash of a directory: sorted relative paths and file bytes."""
-    h = hashlib.sha256()
-    for path in sorted(p for p in glob.glob(os.path.join(root, "**"), recursive=True) if os.path.isfile(p)):
-        rel = os.path.relpath(path, root)
-        h.update(rel.encode() + b"\0")
-        h.update(hashlib.sha256(open(path, "rb").read()).digest())
-    return h.hexdigest()
+def pack(root, dest):
+    """Deterministic tar.gz of root's contents (no wrapper dir): sorted, mtime 0, uid/gid 0, gzip without name/time."""
+    buf = io.BytesIO()
+    with tarfile.open(fileobj=buf, mode="w", format=tarfile.PAX_FORMAT) as tf:
+        for path in sorted(p for p in glob.glob(os.path.join(root, "**"), recursive=True) if os.path.isfile(p)):
+            info = tarfile.TarInfo(os.path.relpath(path, root))
+            info.size, info.mtime, info.mode = os.path.getsize(path), 0, 0o644
+            info.uid = info.gid = 0
+            info.uname = info.gname = ""
+            with open(path, "rb") as f:
+                tf.addfile(info, f)
+    with open(dest, "wb") as raw, gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0, compresslevel=9) as gz:
+        gz.write(buf.getvalue())
+    return hashlib.sha256(open(dest, "rb").read()).hexdigest()
 
 def main():
     ap = argparse.ArgumentParser()
@@ -105,7 +110,8 @@ def main():
     vendor_real = os.path.realpath(vendor)
     keep = {p for p in keep if p.startswith(vendor_real + os.sep)}  # drop SDK/toolchain files reported by cc
 
-    out = os.path.join(a.out, "vendor")
+    out = a.out.rstrip("/") + "-stage"  # vendor layout, packed into a.out below
+    shutil.rmtree(out, ignore_errors=True)
     shutil.rmtree(a.out, ignore_errors=True)
     for p in sorted(keep):
         dst = os.path.join(out, os.path.relpath(p, vendor_real))
@@ -127,12 +133,17 @@ def main():
         open(os.path.join(out, d, name), "wb").write(data)
         log(f"license {e['repo']} -> {d}/{name}")
 
-    sha = tree_sha256(out)
-    size = sum(os.path.getsize(p) for p in glob.glob(os.path.join(out, "**"), recursive=True) if os.path.isfile(p))
     date = NOW.strftime("%Y-%m-%d")
-    name = f"tree-sitter-grammars-{date}"
+    name = f"ts-grammars-{date}"
+    os.makedirs(a.out, exist_ok=True)
+    tarball = os.path.join(a.out, f"{name}.tar.gz")
+    sha = pack(out, tarball)
+    open(tarball + ".sha256", "w").write(f"{sha}  {name}.tar.gz\n")
+    size = os.path.getsize(tarball)
+    shutil.rmtree(out)
+    log(f"file {name}.tar.gz ({size} bytes, {len(rows)} grammars)")
+    log(f"sha256 {sha}")
     log(f"artifact name {name}")
-    log(f"content sha256 {sha} ({size} bytes, {len(rows)} grammars)")
 
     duplicate = prev is not None and prev.get("sha256") == sha and not a.force
     outcome = "skipped as duplicate" if duplicate else "artifact uploaded"
@@ -155,7 +166,7 @@ def main():
         if new:
             s += ["| repo | commit | previous |", "|---|---|---|"]
             s += [f"| {g['repo']} | `{g['commit'][:10]}` | `{(g['previous'] or '-')[:10]}` |" for g in new] + [""]
-        s += [f"- Artifact: `{name}`", f"- Content sha256: `{sha}`", f"- Outcome: **{outcome}**"]
+        s += [f"- Artifact: `{name}` (`{name}.tar.gz` + `.sha256`)", f"- sha256: `{sha}`", f"- Outcome: **{outcome}**"]
         open(os.environ["GITHUB_STEP_SUMMARY"], "a").write("\n".join(s) + "\n")
 
 if __name__ == "__main__":
