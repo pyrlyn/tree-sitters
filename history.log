@@ -98,3 +98,104 @@
 2026-10-27T17:35:05Z artifact name tree-sitter-grammars-2026-10-27
 2026-10-27T17:35:05Z content sha256 0398e7d61f402b4671c394b963f9d90db90b338f4a06a9e14ab9b209679ad279 (382568724 bytes, 34 grammars)
 2026-10-27T17:35:05Z outcome: artifact uploaded
+=== run 40631062044 2026-10-28T04:13:08Z rtok d5b837f8f96f799d22a5dceceb6b9431915a73b6 grammars.json 949ff0e012f7 ===
+2026-10-28T04:13:08Z rtok d5b837f8f96f799d22a5dceceb6b9431915a73b6, grammars.json sha256 949ff0e012f7d1de01cb58e671b8b10b77fa102f95581fa6c35e462b796fff9f, 31 repos pinned
+2026-10-28T04:13:08Z running scripts/grammars.py fetch
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter @ 10eb5ac119eec9cb4267a8e035066473983f5f3a
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter @ 10eb5ac119
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-agda @ 47802091de0cb8ac2533d67ac37e65692c5902c4
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-agda @ 47802091de
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-bash @ a06c2e4415e9bc0346c6b86d401879ffb44058f7
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-bash @ a06c2e4415
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-c @ b780e47fc780ddc8da13afa35a3f4ed5c157823d
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-c @ b780e47fc7
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-c-sharp @ cac6d5fb595f5811a076336682d5d595ac1c9e85
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-c-sharp @ cac6d5fb59
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-cpp @ f41e1a044c8a84ea9fa8577fdd2eab92ec96de02
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-cpp @ f41e1a044c
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-css @ dda5cfc5722c429eaba1c910ca32c2c0c5bb1a3f
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-css @ dda5cfc572
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-embedded-template @ c70c1de07dedd532089c0c90835c8ed9fa694f5c
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-embedded-template @ c70c1de07d
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-fluent @ 858fdd6f1e81992e00d3541bfb31bac9365d7a47
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-fluent @ 858fdd6f1e
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-go @ 1547678a9da59885853f5f5cc8a99cc203fa2e2c
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-go @ 1547678a9d
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-haskell @ 97288e585b0bd44199720280d067fa35bacd81ff
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-haskell @ 97288e585b
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-html @ 5a5ca8551a179998360b4a4ca2c0f366a35acc03
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-html @ 5a5ca8551a
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-java @ 94703d5a6bed02b98e438d7cad1136c01a60ba2c
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-java @ 94703d5a6b
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-javascript @ 44c892e0be055ac465d5eeddae6d3e194424e7de
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-javascript @ 44c892e0be
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-jsdoc @ 658d18dcdddb75c760363faa4963427a7c6b52db
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-jsdoc @ 658d18dcdd
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-json @ ee35a6ebefcef0c5c416c0d1ccec7370cfca5a24
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-json @ ee35a6ebef
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-julia @ e0f9dcd180fdcfcfa8d79a3531e11d99e79321d3
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-julia @ e0f9dcd180
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-ocaml @ e3c9cf368f68bffd2f81188229aefa7b434eda65
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-ocaml @ e3c9cf368f
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-php @ 58d5643086ae60e93a3746cca648363ee97c8761
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-php @ 58d5643086
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-python @ 293fdc02038ee2bf0e2e206711b69c90ac0d413f
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-python @ 293fdc0203
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-ql @ 1fd627a4e8bff8c24c11987474bd33112bead857
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-ql @ 1fd627a4e8
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-ql-dbscheme @ 15baf01feb5f20bb3d668d27abc0a36e944b183f
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-ql-dbscheme @ 15baf01feb
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-regex @ b2ac15e27fce703d2f37a79ccd94a5c0cbe9720b
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-regex @ b2ac15e27f
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-ruby @ 71bd32fb7607035768799732addba884a37a6210
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-ruby @ 71bd32fb76
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-rust @ 77a3747266f4d621d0757825e6b11edcbf991ca5
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-rust @ 77a3747266
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-scala @ 851032fc97297bbe299dabe5bd826f778794d03c
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-scala @ 851032fc97
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-typescript @ f975a621f4e7f532fe322e13c4f79495e0a7b2e7
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-typescript @ f975a621f4
+2026-10-28T04:13:22Z fetched tree-sitter/tree-sitter-verilog @ 521b535e41a5acd2c6539a922d4649bbe8275110
+2026-10-28T04:13:22Z unchanged tree-sitter/tree-sitter-verilog @ 521b535e41
+2026-10-28T04:13:22Z fetched tree-sitter-grammars/tree-sitter-kotlin @ 77dd60ea0a9003ce062c9728a513ffe1aaff8c82
+2026-10-28T04:13:22Z unchanged tree-sitter-grammars/tree-sitter-kotlin @ 77dd60ea0a
+2026-10-28T04:13:22Z fetched UserNobody14/tree-sitter-dart @ 0038280b774b65c1b89ba7fec50624d8baed9fe1
+2026-10-28T04:13:22Z unchanged UserNobody14/tree-sitter-dart @ 0038280b77
+2026-10-28T04:13:22Z fetched alex-pinkus/tree-sitter-swift @ 82bb3a533e0801fd2bbaa11dc49676e10bf41948
+2026-10-28T04:13:22Z unchanged alex-pinkus/tree-sitter-swift @ 82bb3a533e
+2026-10-28T04:13:28Z kept 209 source files for runtime + 34 grammars
+2026-10-28T04:13:29Z license tree-sitter/tree-sitter -> tree-sitter/LICENSE
+2026-10-28T04:13:29Z license tree-sitter/tree-sitter-agda -> tree-sitter-agda/LICENSE
+2026-10-28T04:13:29Z license tree-sitter/tree-sitter-bash -> tree-sitter-bash/LICENSE
+2026-10-28T04:13:29Z license tree-sitter/tree-sitter-c -> tree-sitter-c/LICENSE
+2026-10-28T04:13:29Z license tree-sitter/tree-sitter-c-sharp -> tree-sitter-c-sharp/LICENSE
+2026-10-28T04:13:29Z license tree-sitter/tree-sitter-cpp -> tree-sitter-cpp/LICENSE
+2026-10-28T04:13:29Z license tree-sitter/tree-sitter-css -> tree-sitter-css/LICENSE
+2026-10-28T04:13:30Z license tree-sitter/tree-sitter-embedded-template -> tree-sitter-embedded-template/LICENSE
+2026-10-28T04:13:30Z license tree-sitter/tree-sitter-fluent -> tree-sitter-fluent/LICENSE
+2026-10-28T04:13:30Z license tree-sitter/tree-sitter-go -> tree-sitter-go/LICENSE
+2026-10-28T04:13:30Z license tree-sitter/tree-sitter-haskell -> tree-sitter-haskell/LICENSE
+2026-10-28T04:13:30Z license tree-sitter/tree-sitter-html -> tree-sitter-html/LICENSE
+2026-10-28T04:13:30Z license tree-sitter/tree-sitter-java -> tree-sitter-java/LICENSE
+2026-10-28T04:13:30Z license tree-sitter/tree-sitter-javascript -> tree-sitter-javascript/LICENSE
+2026-10-28T04:13:31Z license tree-sitter/tree-sitter-jsdoc -> tree-sitter-jsdoc/LICENSE
+2026-10-28T04:13:31Z license tree-sitter/tree-sitter-json -> tree-sitter-json/LICENSE
+2026-10-28T04:13:31Z license tree-sitter/tree-sitter-julia -> tree-sitter-julia/LICENSE
+2026-10-28T04:13:31Z license tree-sitter/tree-sitter-ocaml -> tree-sitter-ocaml/LICENSE
+2026-10-28T04:13:31Z license tree-sitter/tree-sitter-php -> tree-sitter-php/LICENSE
+2026-10-28T04:13:31Z license tree-sitter/tree-sitter-python -> tree-sitter-python/LICENSE
+2026-10-28T04:13:32Z license tree-sitter/tree-sitter-ql -> tree-sitter-ql/LICENSE
+2026-10-28T04:13:32Z license tree-sitter/tree-sitter-ql-dbscheme -> tree-sitter-ql-dbscheme/LICENSE
+2026-10-28T04:13:32Z license tree-sitter/tree-sitter-regex -> tree-sitter-regex/LICENSE
+2026-10-28T04:13:32Z license tree-sitter/tree-sitter-ruby -> tree-sitter-ruby/LICENSE
+2026-10-28T04:13:32Z license tree-sitter/tree-sitter-rust -> tree-sitter-rust/LICENSE
+2026-10-28T04:13:32Z license tree-sitter/tree-sitter-scala -> tree-sitter-scala/LICENSE
+2026-10-28T04:13:32Z license tree-sitter/tree-sitter-typescript -> tree-sitter-typescript/LICENSE
+2026-10-28T04:13:33Z license tree-sitter/tree-sitter-verilog -> tree-sitter-verilog/LICENSE
+2026-10-28T04:13:33Z license tree-sitter-grammars/tree-sitter-kotlin -> tree-sitter-kotlin/LICENSE
+2026-10-28T04:13:33Z license UserNobody14/tree-sitter-dart -> tree-sitter-dart/LICENSE
+2026-10-28T04:13:33Z license alex-pinkus/tree-sitter-swift -> tree-sitter-swift/LICENSE
+2026-10-28T04:13:44Z file ts-grammars-2026-10-28.tar.gz (17110144 bytes, 34 grammars)
+2026-10-28T04:13:44Z sha256 75a637ac61288f634d9f8cb91cd188000635c08315041860b6095c24c8102c6e
+2026-10-28T04:13:44Z artifact name ts-grammars-2026-10-28
+2026-10-28T04:13:44Z outcome: artifact uploaded
