@@ -1,4 +1,4 @@
-# tree-sitters
+<h1><picture><source media="(prefers-color-scheme: dark)" srcset="brand/logo-dark.svg"><img src="brand/logo.svg" width="32" height="32" alt="" align="absmiddle"></picture> tree-sitters</h1>
 
 Prebuilt tree-sitter grammar sources for [rtok](https://github.com/pyrlyn/rtok).
 
